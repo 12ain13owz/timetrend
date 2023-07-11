@@ -8,7 +8,7 @@ const logger = require("morgan");
 const adminRouter = require("./routes/auth.routes");
 const userRouter = require("./routes/user.routes");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const corOptions = {
   origin: "http://localhost:4200",
   credentials: true,
