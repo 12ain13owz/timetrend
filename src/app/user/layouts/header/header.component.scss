@@ -1,0 +1,189 @@
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+@media (max-width: 380px) {
+  .logo {
+    width: 100px;
+  }
+}
+
+.resize-img {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-warpper {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.menu-center {
+  display: flex;
+  align-items: center;
+}
+
+.main-memu {
+  margin-left: 60px;
+  display: block;
+}
+
+.main-menu ul li {
+  display: inline-block;
+  position: relative;
+  list-style: none;
+  z-index: 1;
+  margin: 40px 20px;
+}
+
+.main-menu ul li > a {
+  display: block;
+  color: #1d2547;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.main-menu ul li > a:hover {
+  color: dodgerblue;
+}
+
+.main-menu ul li > a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: dodgerblue;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.main-menu ul li > a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.active {
+  color: dodgerblue !important;
+}
+
+.active:after {
+  background: dodgerblue !important;
+  width: 100% !important;
+  left: 0 !important;
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .d-none {
+    display: block;
+  }
+
+  .d-block {
+    display: none;
+  }
+}
+
+.menu-social a > mat-icon {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  color: #1d2547;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  transition: 0.4s;
+  border-radius: 50%;
+  border: 1px solid rgba(29, 37, 71, 0.12);
+}
+
+.menu-social a:hover > mat-icon {
+  color: dodgerblue;
+}
+
+.flip:hover {
+  transform: rotateY(180deg);
+}
+
+.mobile-menu {
+  margin: 28.5px 20px;
+}
+
+@media (max-width: 420px) {
+  .mobile-menu {
+    margin: 0px;
+  }
+}
+
+.icon-navbar {
+  font-size: 26px;
+  transition: 0.4s;
+}
+
+.icon-navbar:hover {
+  color: dodgerblue;
+}
+
+.mat-button {
+  color: #fff;
+  background-color: dodgerblue;
+}
+
+.cart-list {
+  padding-top: 0;
+}
+
+.cart-name {
+  font-size: 16px;
+  font-weight: 500 !important;
+  color: #333;
+}
+
+.cart-price {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+}
+
+.cart-delete {
+  cursor: pointer;
+  color: #909090;
+}
+
+.cart-delete:hover {
+  color: dodgerblue;
+}
+
+.cart-total {
+  font-weight: 500;
+  color: #ff3d71;
+}

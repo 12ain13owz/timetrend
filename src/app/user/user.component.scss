@@ -1,0 +1,23 @@
+.full-warpper {
+  margin: 0 35px;
+}
+
+mat-sidenav-container,
+mat-sidenav-content,
+mat-sidenav {
+  height: 100%;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+mat-sidenav-container {
+  background-color: #f1f4f7;
+}
+
+@media (max-width: 992px) {
+  .full-warpper {
+    margin: 0;
+  }
+}

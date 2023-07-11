@@ -1,0 +1,197 @@
+<div class="mb-50">
+  <div class="container">
+    <div class="row text-center">
+      <div class="header">Shop</div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-50">
+  <div class="container-content">
+    <div fxLayout="row" fxLayoutAlign="space-between" fxLayout.lt-md="column">
+      <div fxFlex="25" fxflex.lt-md="100">
+        <mat-accordion>
+          <mat-expansion-panel class="left-sidebar">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span>Brands</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="panel-body">
+              <mat-radio-group class="radio-group" [(ngModel)]="selectBrand">
+                <mat-radio-button
+                  class="radio-button"
+                  *ngFor="let brand of brands"
+                  [value]="brand.value"
+                  (change)="brandsFilter($event.value)"
+                >
+                  <span>{{ brand.viewValue }}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel class="left-sidebar">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span>Price</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="panel-body">
+              <div
+                class="price-font"
+                fxLayout="row"
+                fxLayoutAlign="space-between"
+              >
+                <span
+                  >From:<b>{{ from | number }}฿</b></span
+                >
+                <span
+                  >To:<b>{{ to | number }}฿</b></span
+                >
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                <mat-slider
+                  class="price-slider from-slider"
+                  (input)="from = $event.value"
+                  [value]="from"
+                  [max]="1300"
+                  [min]="1"
+                  (click)="sellFilter()"
+                  >>
+                </mat-slider>
+                <mat-slider
+                  class="price-slider"
+                  (input)="to = $event.value"
+                  [value]="to"
+                  [max]="1300"
+                  [min]="1"
+                  (click)="sellFilter()"
+                  >>
+                </mat-slider>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <div class="best-seller" fxHide.lt-md>
+          <div fxLayout="column">
+            <div class="best-title">
+              <h4>Best Seller</h4>
+            </div>
+            <mat-list>
+              <mat-list-item
+                class="best-content"
+                *ngFor="let card of bestSeller"
+              >
+                <div class="best-media">
+                  <a [routerLink]="['/shop/product/' + card.id_product]"
+                    ><img [src]="[url + card.cover]" alt="Best Seller"
+                  /></a>
+                </div>
+                <div class="best-info">
+                  <a [routerLink]="['/shop/product/' + card.id_product]"
+                    ><h5 class="best-item-title">
+                      {{ card.code }}-{{ card.color }}
+                    </h5></a
+                  >
+                  <span class="best-sub-title">{{ card.brand }}</span>
+                  <span class="best-sell"
+                    >{{ card.sale | number }}
+                    <span class="best-price"> {{ card.price | number }} </span>
+                  </span>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+
+      <div fxFlex="75" fxflex.lt-md="100">
+        <div class="right-sidebar">
+          <div
+            class="right-content"
+            fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutAlign="space-between"
+          >
+            <mat-form-field>
+              <mat-label>Search product</mat-label>
+              <input
+                matInput
+                type="text"
+                class="mat-font"
+                (keyup)="applyFilter($event.target.value)"
+              />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Sorting items</mat-label>
+              <mat-select
+                [(ngModel)]="selectedSort"
+                (selectionChange)="applySorting()"
+              >
+                <mat-option *ngFor="let sort of sorting" [value]="sort.value">
+                  {{ sort.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row warp">
+            <div
+              class="right-item"
+              fxFlex="25"
+              fxFlex.md="50"
+              fxFlex.sm="50"
+              fxFlex.xs="100"
+              fxLayout="column"
+              matSort
+              *ngFor="let card of obs | async"
+            >
+              <mat-card class="item item-content">
+                <a [routerLink]="['/shop/product/' + this.card.id_product]">
+                  <img
+                    mat-card-image
+                    [defaultImage]="loadingImage"
+                    [lazyLoad]="[url + card.cover]"
+                    alt="Product"
+                  />
+                </a>
+
+                <mat-card-content>
+                  <span class="sub-title">{{ card.brand }}</span>
+                  <h4 class="item-title">
+                    รหัส: {{ card.code }}-{{ card.color }}
+                  </h4>
+                  <hr />
+                  <div class="content">
+                    <div class="text-content">
+                      <span class="text-danger">{{ card.sale | number }}฿</span>
+                      <span class="text-gray">{{ card.price | number }}฿</span>
+                    </div>
+                    <button
+                      mat-mini-fab
+                      class="btn-icon"
+                      (click)="addToCart(card)"
+                    >
+                      <mat-icon class="icon-display">shopping_cart</mat-icon>
+                    </button>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+          <div class="right-item">
+            <mat-paginator
+              class="paginator-content"
+              [pageSizeOptions]="[12]"
+              (page)="onNextorPrePage()"
+            ></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

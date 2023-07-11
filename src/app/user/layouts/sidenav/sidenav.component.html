@@ -1,0 +1,47 @@
+<h2 matSubheader style="margin-top: 16px">
+  <a [routerLink]="['/home']" (click)="onSidenavClose()">
+    <img src="../../../../assets/img/logo-shop.png" class="logo" />
+  </a>
+</h2>
+<hr />
+<mat-nav-list>
+  <a
+    mat-list-item
+    [routerLink]="['home']"
+    [routerLinkActive]="['active']"
+    (click)="onSidenavClose()"
+  >
+    <mat-icon>home</mat-icon>
+    <span class="nav-caption">Home</span>
+  </a>
+
+  <a
+    mat-list-item
+    [routerLink]="['shop']"
+    [routerLinkActive]="['active']"
+    (click)="onSidenavClose()"
+  >
+    <mat-icon>shop</mat-icon>
+    <span class="nav-caption">Shop</span>
+  </a>
+
+  <a
+    mat-list-item
+    [routerLink]="['track']"
+    [routerLinkActive]="['active']"
+    (click)="onSidenavClose()"
+  >
+    <mat-icon>local_shipping</mat-icon>
+    <span class="nav-caption">Track Order</span>
+  </a>
+
+  <a
+    mat-list-item
+    [routerLink]="['contact']"
+    [routerLinkActive]="['active']"
+    (click)="onSidenavClose()"
+  >
+    <mat-icon>contacts</mat-icon>
+    <span class="nav-caption">Contact</span>
+  </a>
+</mat-nav-list>

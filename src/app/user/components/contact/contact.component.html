@@ -1,0 +1,93 @@
+<div class="mb-50">
+  <div class="container">
+    <div class="row text-center">
+      <div class="header">Contact us</div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-50">
+  <div class="container-content">
+    <mat-card fxLayout="row" fxLayout.lt-sm="column">
+      <div class="left-info" fxflex="100" fxFlex.gt-sm="60">
+        <div class="title">
+          <h3>Contact</h3>
+        </div>
+        <mat-card-header>
+          <div mat-card-avatar><mat-icon>phone</mat-icon></div>
+          <mat-card-title>Phone</mat-card-title>
+          <mat-card-subtitle>086-257-8989</mat-card-subtitle>
+        </mat-card-header>
+        <hr />
+        <mat-card-header>
+          <div mat-card-avatar><mat-icon>facebook</mat-icon></div>
+          <mat-card-title>Facebook</mat-card-title>
+          <mat-card-subtitle>timetrendofficial</mat-card-subtitle>
+        </mat-card-header>
+        <hr />
+        <mat-card-header>
+          <div mat-card-avatar><mat-icon>email</mat-icon></div>
+          <mat-card-title>Email</mat-card-title>
+          <mat-card-subtitle>timetrend@gmail.com</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+
+      <div class="right-contact" fxflex="100" fxFlex.gt-sm="60">
+        <form [formGroup]="cform" #FormDirective="ngForm" (submit)="onSend()">
+          <mat-form-field>
+            <mat-label>Your Name *</mat-label>
+            <input
+              matInput
+              formControlName="name"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error *ngIf="name.hasError('required')">
+              Name is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Your Email *</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Ex. pat@example.com"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error *ngIf="email.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="email.hasError('email') && !email.hasError('required')"
+            >
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Subject *</mat-label>
+            <input
+              matInput
+              formControlName="subject"
+              [errorStateMatcher]="matcher"
+            />
+            <mat-error *ngIf="subject.hasError('required')">
+              Subject is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Post content *</mat-label>
+            <textarea
+              matInput
+              rows="6"
+              formControlName="content"
+              [errorStateMatcher]="matcher"
+            ></textarea>
+            <mat-error *ngIf="content.hasError('required')">
+              Post content is required
+            </mat-error>
+          </mat-form-field>
+          <button type="submit" mat-raised-button class="send-btn">Send</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>

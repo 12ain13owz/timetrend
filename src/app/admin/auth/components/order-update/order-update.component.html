@@ -1,0 +1,143 @@
+<mat-card class="mb-50">
+  <mat-card-content>
+    <div fxLayout="row warp">
+      <form
+        fxFlex="100"
+        fxFlex.gt-sm="50"
+        ngClass.gt-sm="pr-15"
+        [formGroup]="orderForm"
+        (submit)="updateOrder()"
+      >
+        <mat-card-title>Edit Order</mat-card-title>
+        <div fxLayout="row warp">
+          <mat-form-field>
+            <mat-label>Track Number</mat-label>
+            <input matInput disabled [value]="data.order.track" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" fxFlex.gt-xs="50" ngClass.gt-xs="pr-5">
+            <mat-label>Logistic</mat-label>
+            <input matInput formControlName="logistic" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" fxFlex.gt-xs="50" ngClass.gt-xs="pl-5">
+            <mat-label>Logistic Track</mat-label>
+            <input matInput formControlName="logistic_track" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullname" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address1" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label
+              >Sub-district / District / Province / Postal Code</mat-label
+            >
+            <input matInput formControlName="address2" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" fxFlex.gt-xs="50" ngClass.gt-xs="pr-5">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+          </mat-form-field>
+
+          <mat-form-field fxFlex="100" fxFlex.gt-xs="50" ngClass.gt-xs="pl-5">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Remark</mat-label>
+            <textarea matInput rows="3" formControlName="remark"></textarea>
+          </mat-form-field>
+          <button mat-button>Submit</button>
+        </div>
+      </form>
+      <div fxFlex="100" fxFlex.gt-sm="50" ngClass.gt-sm="pl-15">
+        <mat-card-title class="mb-20">Track</mat-card-title>
+        <div fxLayout="row mb-50">
+          <div fxFlex="100" *ngFor="let item of column; let i = index">
+            <div fxFlex.gt-xs="30" ngClass.gt-xs="pr-5">
+              <div class="mat-group">
+                <label>{{ column[i] }}</label>
+                <mat-radio-group [(ngModel)]="status[i]">
+                  <mat-radio-button [value]="1">True</mat-radio-button>
+                  <mat-radio-button [value]="0">False</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+
+            <mat-form-field fxFlex.gt-xs="70" ngClass.gt-xs="pl-5">
+              <mat-label>วัน-เวลา</mat-label>
+              <input matInput [(ngModel)]="date[i]" />
+            </mat-form-field>
+          </div>
+          <button mat-button (click)="updateTrack()">Submit</button>
+        </div>
+        <hr />
+
+        <mat-card-title class="mb-20">Receipt</mat-card-title>
+        <div class="receipt text-center">
+          <img [src]="[url.localhost + data.order.receipt]" />
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="mb-50">
+  <mat-card-title>List</mat-card-title>
+  <mat-card-content>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      *ngIf="dataSource.data.length > 0"
+    >
+      <ng-container matColumnDef="product">
+        <th mat-header-cell *matHeaderCellDef>Product</th>
+        <td mat-cell *matCellDef="let element">
+          <div class="cart-col-image">
+            <img [src]="[url.localhost + element.cover]" class="cart-image" />
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.code }}-{{ element.color }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.sale | number }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="cart-quan">{{ element.quantity }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.sale * element.quantity | number }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

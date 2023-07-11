@@ -1,0 +1,111 @@
+<mat-card class="mb-50">
+  <mat-card-title>New Inbox</mat-card-title>
+  <mat-card-content>
+    <table mat-table matSort [dataSource]="dataSource1">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? masterToggle() : null"
+            [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()"
+            [aria-label]="checkboxLabel()"
+          >
+          </mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)"
+            [aria-label]="checkboxLabel(row)"
+          >
+          </mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id_inbox">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id_inbox }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef>subject</th>
+        <td mat-cell *matCellDef="let element">{{ element.subject }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="content">
+        <th mat-header-cell *matHeaderCellDef>Content</th>
+        <td mat-cell *matCellDef="let element">{{ element.content }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedInbox"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedInbox"></tr>
+    </table>
+
+    <mat-toolbar style="background-color: inherit">
+      <mat-toolbar-row fxLayoutAlign="space-between center">
+        <button mat-button color="primary" (click)="updateActive()">
+          Send to history
+        </button>
+        <mat-paginator [pageSizeOptions]="[20, 50, 75, 100]"></mat-paginator>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="mb-50">
+  <mat-card-title>History</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input />
+    </mat-form-field>
+
+    <table
+      mat-table
+      matSort
+      matSortActive="id_inbox"
+      matSortDirection="desc"
+      [dataSource]="dataSource2"
+    >
+      <ng-container matColumnDef="id_inbox">
+        <th mat-header-cell mat-sort-header="id_inbox" *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id_inbox }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef>subject</th>
+        <td mat-cell *matCellDef="let element">{{ element.subject }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="content">
+        <th mat-header-cell *matHeaderCellDef>Content</th>
+        <td mat-cell *matCellDef="let element">{{ element.content }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedHistory"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedHistory"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[20, 50, 75, 100]"></mat-paginator>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,40 @@
+.left-info {
+  padding-right: 100px;
+
+  mat-icon {
+    font-size: 40px;
+    color: #ff3d71;
+  }
+
+  hr {
+    border: 1px solid #e8e8e8;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.right-contact {
+  position: relative;
+
+  mat-form-field {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  h3 {
+    font-weight: 500;
+    font-size: 28px;
+    color: #383838;
+  }
+}
+
+.send-btn {
+  padding: 0 30px;
+  min-width: max-content;
+  border-radius: 1.25rem;
+  background-color: #1e90ff;
+  color: #fff;
+}

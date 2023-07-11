@@ -1,0 +1,123 @@
+<div class="mb-50 fade-in">
+  <div class="carousel-container">
+    <mat-carousel
+      timings="300ms ease-in"
+      [autoplay]="true"
+      interval="3000"
+      color="accent"
+      maxWidth="auto"
+      proportion="43"
+      slides="3"
+      [loop]="true"
+      [hideArrows]="false"
+      [hideIndicators]="false"
+      [useKeyboard]="false"
+      [useMouseWheel]="false"
+      orientation="ltr"
+    >
+      <mat-carousel-slide
+        #matCarouselSlide
+        *ngFor="let slide of slides; let i = index"
+        [image]="slide.image"
+        overlayColor="#00000040"
+        [hideOverlay]="true"
+      ></mat-carousel-slide>
+    </mat-carousel>
+  </div>
+</div>
+
+<div class="mb-50">
+  <div class="row">
+    <div class="col">
+      <div class="item fade-up">
+        <img
+          src="../../../../assets/img/home/megir.png"
+          alt="shop"
+          class="img-size"
+        />
+        <div class="img-cap"><span>Megir</span></div>
+        <div class="img-link">
+          <a [routerLink]="['/shop']" class="img-btn">Shop</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="item fade-up">
+        <img
+          src="../../../../assets/img/home/megirw.png"
+          alt="shop"
+          class="img-size"
+        />
+        <div class="img-cap"><span>Megir W</span></div>
+        <div class="img-link">
+          <a [routerLink]="['/shop']" class="img-btn">Shop</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="item fade-up">
+        <img
+          src="../../../../assets/img/home/cadisen.png"
+          alt="shop"
+          class="img-size"
+        />
+        <div class="img-cap"><span>Cadisen</span></div>
+        <div class="img-link">
+          <a [routerLink]="['/shop']" class="img-btn">Shop</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="item fade-up">
+        <img
+          src="../../../../assets/img/home/ruimas.png"
+          alt="shop"
+          class="img-size"
+        />
+        <div class="img-cap"><span>Ruimas</span></div>
+        <div class="img-link">
+          <a [routerLink]="['/shop']" class="img-btn">Shop</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mb-50">
+  <div class="container">
+    <div class="row text-center mb-50">
+      <div class="header">
+        best
+        <br />
+        seller
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" *ngFor="let card of item">
+        <mat-card class="item item-content">
+          <a [routerLink]="['/shop/product/' + this.card.id_product]">
+            <img mat-card-image [src]="[url + card.cover]" alt="Best Seller" />
+          </a>
+          <mat-card-content>
+            <span class="sub-title">{{ card.brand }}</span>
+            <h4 class="item-title">รหัส: {{ card.code }}-{{ card.color }}</h4>
+            <hr />
+            <div class="content">
+              <div class="text-content">
+                <span class="text-danger">{{ card.sale | number }}฿</span>
+                <span class="text-gray">{{ card.price | number }}฿</span>
+              </div>
+              <button mat-mini-fab class="btn-icon" (click)="addToCart(card)">
+                <mat-icon class="icon-display">shopping_cart</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

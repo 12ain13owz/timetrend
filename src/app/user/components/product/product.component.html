@@ -1,0 +1,127 @@
+<div class="mb-50">
+  <div class="container-content">
+    <div fxLayout="column" fxFlex="100">
+      <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="100">
+        <div fxFlex="40" fxFlex.lt-sm="100">
+          <mat-card class="product-image">
+            <img
+              mat-card-image
+              [src]="[url + product.detail.cover]"
+              alt="product"
+              class="img-size"
+            />
+          </mat-card>
+          <div class="slider">
+            <button mat-mini-fab class="left" (click)="moveLeft()">
+              <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+            <button mat-mini-fab class="right" (click)="moveRight()">
+              <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+            <drag-scroll scrollbar-hidden="true" #nav>
+              <img
+                *ngFor="let img of product.imageList"
+                drag-scroll-item
+                [src]="[url + img]"
+                (click)="onChangeImage(img)"
+              />
+            </drag-scroll>
+          </div>
+        </div>
+        <div fxFlex="60" fxFlex.lt-sm="100">
+          <div [ngClass.gt-xs]="'product-right'">
+            <mat-card>
+              <div class="product-detail">
+                <div class="product-title mb-18">
+                  {{ product.detail.code }} {{ product.detail.title }}
+                </div>
+                <div class="product-price mb-18">
+                  <span class="sell">{{ product.detail.sale }}฿</span>
+                  <span class="price">{{ product.detail.price }}฿</span>
+                </div>
+                <hr />
+                <mat-card-content>
+                  <div class="mb-18">
+                    <p>{{ product.detail.description }}</p>
+                  </div>
+                  <div class="product-avalibility">
+                    <p>
+                      <span>การจัดส่ง:</span>จัดส่งโดยบริษัท Kerry Express
+                      รับสินค้าภายใน 1-2 วัน
+                    </p>
+                    <p><span>สถานะ:</span>{{ avalibility }}</p>
+                    <p class="capitalize">
+                      <span>แบรนด์:</span>{{ product.detail.brand }}
+                    </p>
+                    <p><span>คลัง:</span>{{ product.detail.stock }} ชื้น</p>
+                    <p>
+                      <span>จำนวน:</span
+                      ><button mat-icon-button (click)="Remove()">
+                        <mat-icon>remove</mat-icon>
+                      </button>
+                      <input
+                        class="input-number"
+                        [formControl]="number"
+                        (input)="NumberOnly(number.value)"
+                        (focusout)="InputQuantity()"
+                      />
+                      <button mat-icon-button (click)="Add()">
+                        <mat-icon>add</mat-icon>
+                      </button>
+                    </p>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions style="margin-left: 0">
+                  <button mat-button class="btn-buy" (click)="addToCart()">
+                    ADD TO CART
+                  </button>
+                  <button mat-button class="btn-buy" (click)="onBuy()">
+                    BUY NOW
+                  </button>
+                </mat-card-actions>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxFlex="100">
+        <mat-card>
+          <mat-tab-group mat-align-tabs="start" dynamicHeight>
+            <mat-tab label="Specifications">
+              <div class="full-desc">
+                <ul>
+                  <li *ngFor="let spec of specs">{{ spec }}</li>
+                </ul>
+              </div>
+            </mat-tab>
+            <mat-tab label="Water Resistant">
+              <div class="full-desc">
+                <h2>ระดับการกันน้ำ ความเหมาะสม</h2>
+                <p class="mb-8">0 – 1 ATM / 0 – 10 M ล้างมือ, ฝนตก</p>
+                <p class="mb-8">3 ATM / 30 M ล้างมือ, ฝนตก, ล้างรถ</p>
+                <p class="mb-8">
+                  5 ATM / 50 M ล้างมือ, ฝนตก, ล้างรถ, อาบน้ำ, ว่ายน้ำ
+                </p>
+                <p class="mb-8">
+                  10 ATM / 100 M ล้างมือ, ฝนตก, ล้างรถ, อาบน้ำ, ว่ายน้ำและ
+                  การดำน้ำทะเลตื้น
+                </p>
+                <p class="mb-8">
+                  20 ATM / 200 M ล้างมือ, ฝนตก, ล้างรถ, อาบน้ำ, ว่ายน้ำ,
+                  การดำน้ำทะเลตื้นและ การดำน้ำทะเลลึก
+                </p>
+                <p>
+                  ** ระดับการกันน้ำที่ระบุไว้ ไม่ได้หมายความว่า นาฬิกาเรือนนั้นๆ
+                  จะสามารถลงไปที่ระดับความลึกนั้นได้จริง
+                  แต่เป็นความสามารถในการป้องกันแรงดัน
+                  ได้เทียบเท่ากับระดับน้ำลึกนั้นๆ
+                </p>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

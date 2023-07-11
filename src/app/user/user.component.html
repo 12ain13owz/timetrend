@@ -1,0 +1,19 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content cdkScrollable>
+    <div class="full-warpper">
+      <header class="container-fluid">
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+      </header>
+      <main class="container-fluid">
+        <router-outlet (activate)="onActivate()"></router-outlet>
+      </main>
+      <footer class="container-fluid">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+    <app-scroll-top></app-scroll-top>
+  </mat-sidenav-content>
+</mat-sidenav-container>

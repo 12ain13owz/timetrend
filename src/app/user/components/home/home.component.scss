@@ -1,0 +1,154 @@
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.item {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.item-content:hover {
+  box-shadow: 0px 13px 20px rgba(88, 84, 84, 0.2);
+}
+
+.item-content {
+  h6 {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .sub-title {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #848484;
+    text-transform: capitalize;
+  }
+
+  .item-title {
+    overflow: hidden;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    place-content: center space-between;
+    align-items: center;
+  }
+
+  .text-content {
+    font-size: 19px;
+    font-weight: 500;
+  }
+
+  .text-danger {
+    color: #ff3d71;
+    margin-right: 8px;
+  }
+
+  .text-gray {
+    font-size: 14px;
+    color: #9e9e9e;
+    text-decoration: line-through;
+  }
+}
+
+.btn-icon {
+  background-color: #1e90ff;
+}
+
+.icon-display {
+  font-size: 18px;
+  height: 18px;
+  width: 18px;
+}
+
+.img-size {
+  width: 100%;
+  max-height: max-content;
+}
+
+.img-cap {
+  position: absolute;
+  visibility: hidden;
+  bottom: -20%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.img-link {
+  position: absolute;
+  top: 30%;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  left: 0;
+  margin: 0 auto;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.img-btn {
+  display: inline-block;
+  overflow: hidden;
+  margin: 0;
+  padding: 27px 44px;
+  color: #fff;
+  background: #60b0f4;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+  border-radius: 4px;
+}
+
+.img-btn:hover {
+  box-shadow: inset 8em 0 0#1E90FF;
+}
+
+.img-cap {
+  span {
+    color: #fff;
+    background: rgba(29, 37, 71, 0.5);
+    padding: 20px 0;
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.fade-up:hover {
+  .img-cap {
+    visibility: visible;
+    bottom: 1%;
+    opacity: 1;
+  }
+
+  .img-link {
+    visibility: visible;
+    top: 40%;
+    opacity: 1;
+  }
+}

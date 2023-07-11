@@ -1,0 +1,106 @@
+<div class="menu-warpper">
+  <div class="header-left menu-center">
+    <div class="logo">
+      <a [routerLink]="['/home']">
+        <img
+          src="../../../../assets/img/logo-shop.png"
+          alt="TimeTrend"
+          class="resize-img"
+        />
+      </a>
+    </div>
+
+    <div class="mobile-menu d-block">
+      <div style="margin-bottom: 8px">
+        <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon class="icon-navbar">menu</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="main-menu d-none">
+      <nav>
+        <ul>
+          <li>
+            <a [routerLink]="['home']" [routerLinkActive]="['active']">Home</a>
+          </li>
+          <li>
+            <a [routerLink]="['shop']" [routerLinkActive]="['active']">Shop</a>
+          </li>
+          <li>
+            <a [routerLink]="['track']" [routerLinkActive]="['active']"
+              >Order Track</a
+            >
+          </li>
+          <li>
+            <a [routerLink]="['contact']" [routerLinkActive]="['active']"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="header-right menu-center">
+    <div class="menu-social">
+      <a href="https://www.facebook.com/timetrendofficial" target="_blank">
+        <mat-icon class="icon flip">facebook</mat-icon>
+      </a>
+
+      <a [routerLink]="['/checkout']">
+        <mat-icon class="icon" [matBadge]="listItem" matBadgeColor="warn"
+          >shopping_cart</mat-icon
+        >
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- <mat-menu #menu="matMenu" xPosition="before">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-list>
+      <mat-list-item
+        ><a [routerLink]="['/checkout']" mat-button>Check Out</a></mat-list-item
+      >
+    </mat-list>
+    <mat-list>
+      <mat-list-item>{{ listItem }} Item</mat-list-item>
+    </mat-list>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div
+    fxLayout="row"
+    fxLayoutAlign="space-between"
+    *ngFor="let item of cartItem"
+  >
+    <mat-list class="cart-list">
+      <mat-list-item>
+        <div mat-line class="cart-name">
+          {{ item.detail.code }}-{{ item.detail.color }}
+        </div>
+        <div mat-line class="cart-price">
+          {{ item.quantity }} X {{ item.detail.sell | number }}
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <mat-list class="cart-list">
+      <mat-list-item
+        ><mat-icon class="cart-delete" (click)="onRemove($event, item)"
+          >delete</mat-icon
+        ></mat-list-item
+      >
+    </mat-list>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <mat-list class="cart-list">
+      <mat-list-item>Subtotal: </mat-list-item>
+    </mat-list>
+    <mat-list class="cart-list">
+      <mat-list-item class="cart-total">{{ totaItem | number }}B</mat-list-item>
+    </mat-list>
+  </div>
+</mat-menu> -->
