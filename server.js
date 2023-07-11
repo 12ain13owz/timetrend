@@ -10,7 +10,7 @@ const userRouter = require("./routes/user.routes");
 const app = express();
 const port = process.env.PORT || 3000;
 const corOptions = {
-  origin: "http://localhost:4200",
+  origin: "https://time-trend.fly.dev/",
   credentials: true,
 };
 const sessionOptions = {
