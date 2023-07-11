@@ -8,7 +8,6 @@ import { FocusDirective } from './command/focus.directive';
 import { FormService, HighlightPipe } from './services/form.service';
 import { CartService } from './services/cart.service';
 import { HttpService } from './services/http.service';
-import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
@@ -20,7 +19,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HttpClientModule,
     FlexLayoutModule,
     MaterialModule,
-    LazyLoadImageModule,
     NgxDropzoneModule,
   ],
   exports: [
@@ -31,7 +29,6 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     MaterialModule,
     FocusDirective,
     HighlightPipe,
-    LazyLoadImageModule,
     NgxDropzoneModule,
   ],
   providers: [FormService, CartService, HttpService],

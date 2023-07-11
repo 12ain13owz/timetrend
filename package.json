@@ -26,7 +26,6 @@
     "@types/gsap": "^1.20.2",
     "angular2-notifications": "^9.0.0",
     "gsap": "^3.5.1",
-    "ng-lazyload-image": "^9.1.0",
     "ngx-drag-scroll": "^9.0.0-beta.4",
     "ngx-dropzone": "^2.2.2",
     "rxjs": "~6.6.0",

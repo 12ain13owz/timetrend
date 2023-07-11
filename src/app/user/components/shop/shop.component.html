@@ -154,8 +154,7 @@
                 <a [routerLink]="['/shop/product/' + this.card.id_product]">
                   <img
                     mat-card-image
-                    [defaultImage]="loadingImage"
-                    [lazyLoad]="[url + card.cover]"
+                    [src]="[url + card.cover]"
                     alt="Product"
                   />
                 </a>
