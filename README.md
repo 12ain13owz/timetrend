@@ -6,9 +6,9 @@ Deploy App Servers Fly.io https://time-trend.fly.dev/
 
 โปรเจคงานกลุ่มนำเสนอเทคโนโลยีที่ช่วยในการจัดการธุรกิจ จึงศึกษาและพัฒนาระบบขายสินค้าออนไลน์ร้าน Time Trend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
-
 ## Development server
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
