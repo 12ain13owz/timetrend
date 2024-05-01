@@ -1,7 +1,7 @@
 # Timetrend-Build
 
 Deploy App Servers Fly.io
-https://time-trend.fly.dev/
+https://timetrend.fly.dev/
 
 ## Front-end
 
